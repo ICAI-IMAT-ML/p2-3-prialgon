@@ -129,6 +129,23 @@ def evaluate_regression(y_true, y_pred):
 
 def sklearn_comparison(x, y, linreg):
     # Compare your model with sklearn linear regression model
+    """Compares a custom linear regression model with scikit-learn's LinearRegression.
+
+    Args:
+        x (numpy.ndarray): The input feature data (1D array).
+        y (numpy.ndarray): The target values (1D array).
+        linreg (object): An instance of a custom linear regression model. Must have
+            attributes `coefficients` and `intercept`.
+
+    Returns:
+        dict: A dictionary containing the coefficients and intercepts of both the
+            custom model and the scikit-learn model. Keys are:
+            - "custom_coefficient": Coefficient of the custom model.
+            - "custom_intercept": Intercept of the custom model.
+            - "sklearn_coefficient": Coefficient of the scikit-learn model.
+            - "sklearn_intercept": Intercept of the scikit-learn model.
+    """
+    # Compare your model with sklearn linear regression model
     # TODO : Import Linear regression from sklearn
     from sklearn.linear_model import LinearRegression
 
@@ -155,6 +172,17 @@ def sklearn_comparison(x, y, linreg):
 
 
 def anscombe_quartet():
+    """Loads Anscombe's quartet, fits custom linear regression models, and evaluates performance.
+
+    Returns:
+        tuple: A tuple containing:
+            - anscombe (pandas.DataFrame): The Anscombe's quartet dataset.
+            - datasets (list): A list of unique dataset identifiers in Anscombe's quartet.
+            - models (dict): A dictionary where keys are dataset identifiers and values
+              are the fitted custom linear regression models.
+            - results (dict): A dictionary containing evaluation metrics (R2, RMSE, MAE)
+              for each dataset.
+    """
     # Load Anscombe's quartet
     # These four datasets are the same as in slide 19 of chapter 02-03: Linear and logistic regression
     anscombe = sns.load_dataset("anscombe")
